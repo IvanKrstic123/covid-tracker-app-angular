@@ -9,6 +9,6 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getSummaryData() {
-    return this.http.get('https://api.covid19api.com');
+    return this.http.get('https://api.covid19api.com/summary');
   }
 }
