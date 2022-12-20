@@ -34,12 +34,10 @@
 }
 .sidebar .navigation ul li:hover a,
 .sidebar .navigation ul li:active a,
-.sidebar .navigation ul li:focus a{
+.sidebar .navigation ul li:focus a {
     color: #fff;
 }
 .sidebar .navigation ul li.active {
     background-color: #333;
-}
-.sidebar .navigation ul li:active a {
-    color: #ffffff;
+    color: white;
 }
