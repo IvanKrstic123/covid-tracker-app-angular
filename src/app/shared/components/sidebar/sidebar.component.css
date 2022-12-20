@@ -37,3 +37,9 @@
 .sidebar .navigation ul li:focus a{
     color: #fff;
 }
+.sidebar .navigation ul li.active {
+    background-color: #333;
+}
+.sidebar .navigation ul li:active a {
+    color: #ffffff;
+}
