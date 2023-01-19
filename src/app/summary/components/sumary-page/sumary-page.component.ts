@@ -16,7 +16,6 @@ export class SumaryPageComponent implements OnInit {
     .subscribe(
       (data:any) => {
         this.covidData = data;
-        console.log('Summary Data: ', this.covidData)
     }); 
   }
 
