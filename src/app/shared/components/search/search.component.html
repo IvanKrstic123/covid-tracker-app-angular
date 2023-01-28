@@ -2,9 +2,11 @@
   <div class="col-md-4"></div>
   <div class="col-md-4">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search Country" />
+      <input type="text" class="form-control" placeholder="Search Country" [(ngModel)]="searchTerm" />
 
-      <button class="btn btn-outline-success">Search</button>
+      <button class="btn btn-outline-success" type="button" (click)="search()">
+        Search
+      </button>
     </div>
   </div>
 </div>
