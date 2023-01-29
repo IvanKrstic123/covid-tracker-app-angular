@@ -1,6 +1,13 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-country-chart',
@@ -8,23 +15,37 @@ import { Label } from 'ng2-charts';
   styleUrls: ['./country-chart.component.css'],
 })
 export class CountryChartComponent implements OnInit, OnChanges {
-  
   @Input() country: string = 'India';
-  
-  barChartData: ChartDataSets[] = [{
-    data: [64, 59, 80]
-  }];
+
+  barChartData: ChartDataSets[] = [
+    {
+      data: [64, 59, 80],
+    },
+  ];
   barChartLabels: Label[] = ['USA', 'UK', 'Brasil'];
   barChartOptions: ChartOptions = {
-    responsive: true
+    responsive: true,
   };
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartPlugins = [];
 
+  constructor(private dataService: DataService) {}
+
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.country);
+  ngOnChanges(): void {
+    this.getCountryData();
+  }
+
+  getCountryData() {
+    this.dataService
+      .getCountryDataByDate(
+        this.country,
+        'from=2020-03-03T00:00:00&to=2022-06-06T:00:00:00'
+      )
+      .subscribe((response: any) => {
+        console.log(response);
+      });
   }
 }
