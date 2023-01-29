@@ -8,6 +8,7 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class SumaryPageComponent implements OnInit {
   covidData: any = {};
+  countryToSearch: string = '';
 
   constructor(private dataService: DataService) {}
 
@@ -17,6 +18,10 @@ export class SumaryPageComponent implements OnInit {
       (data:any) => {
         this.covidData = data;
     }); 
+  }
+
+  searchCountry(searchTerm: string) {
+    this.countryToSearch = searchTerm;
   }
 
 }
