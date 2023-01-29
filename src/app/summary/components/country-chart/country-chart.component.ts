@@ -19,10 +19,11 @@ export class CountryChartComponent implements OnInit, OnChanges {
 
   barChartData: ChartDataSets[] = [
     {
-      data: [64, 59, 80],
+      data: [],
+      label: 'Confirmed Cases'
     },
   ];
-  barChartLabels: Label[] = ['USA', 'UK', 'Brasil'];
+  barChartLabels: Label[] = [];
   barChartOptions: ChartOptions = {
     responsive: true,
   };
@@ -45,7 +46,8 @@ export class CountryChartComponent implements OnInit, OnChanges {
         'from=2020-03-03T00:00:00&to=2022-06-06T:00:00:00'
       )
       .subscribe((response: any) => {
-        console.log(response);
+        this.barChartData[0].data = response.map((obj: any) => obj['Cases']);
+        this.barChartLabels = response.map((obj: any) => obj['Date'].substring(0, 10))
       });
   }
 }
